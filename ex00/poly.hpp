@@ -9,10 +9,13 @@ protected://can be used for child classes
     std::string Type;
 
 public:
-    Animal(std::string type = "random animal");
+    Animal();
     Animal(const Animal& other);
     Animal& operator=(const Animal& other);
-    ~Animal();
+    virtual ~Animal();//virtual: deleting a Dog through an Animal* must run ~Dog
+
+    std::string getType() const;
+    virtual void makeSound() const;
 };
 
 #endif
