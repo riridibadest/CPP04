@@ -17,7 +17,7 @@ Dog& Dog::operator=(const Dog& other)
     if (this != &other)
     {
         this->Animal::operator=(other);
-        *this->brain = *other.brain;
+        *this->brain = *other.brain;//grab the value that are stored at the pointer
     }
     return (*this);
 }

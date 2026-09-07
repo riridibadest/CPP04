@@ -4,7 +4,7 @@ Animal::Animal() : Type("random animal")
 {
     std::cout << "Animal created" << std::endl;
 }
-
+//only needed when owning value & ithas to change
 Animal::Animal(const Animal& other) : Type(other.Type)
 {
     std::cout << "Animal copy constructor called" << std::endl;

@@ -13,48 +13,52 @@ static void title(const std::string& s)
 int main()
 {
     title("the subject's test: polymorphism through Animal*");
+    std::cout << "\n" << std::endl;
     {
-        const Animal* meta = new Animal();
+        const Animal* ani = new Animal();
         const Animal* j = new Dog();
         const Animal* i = new Cat();
 
         std::cout << std::endl;
-        std::cout << j->getType() << " " << std::endl;
         std::cout << i->getType() << " " << std::endl;
         i->makeSound();//the cat sound
+        std::cout << j->getType() << " " << std::endl;
         j->makeSound();//the dog sound
-        meta->makeSound();
+        ani->makeSound();
 
         std::cout << std::endl;
-        delete meta;
+        delete ani;
         delete j;//virtual destructor: ~Dog then ~Animal
         delete i;
     }
-
+    std::cout << "\n" << std::endl;
     title("WrongCat through a WrongAnimal*: no polymorphism");
+    std::cout << "\n" << std::endl;
     {
-        const WrongAnimal* wmeta = new WrongAnimal();
+        const WrongAnimal* wani = new WrongAnimal();
         const WrongAnimal* wi = new WrongCat();
 
         std::cout << std::endl;
         std::cout << wi->getType() << " " << std::endl;
         wi->makeSound();//WrongAnimal's sound, NOT the cat's
-        wmeta->makeSound();
+        wani->makeSound();
 
         std::cout << std::endl;
-        delete wmeta;
+        delete wani;
         delete wi;//non-virtual destructor: ~WrongCat is skipped
     }
-
+    std::cout << "\n" << std::endl;
     title("WrongCat through its real type: its own sound is reachable");
+    std::cout << "\n" << std::endl;
     {
         const WrongCat wc;
         std::cout << std::endl;
         wc.makeSound();
         std::cout << std::endl;
     }
-
+    std::cout << "\n" << std::endl;
     title("stack objects, direct calls");
+    std::cout << "\n" << std::endl;
     {
         const Dog d;
         const Cat c;
@@ -65,8 +69,9 @@ int main()
         c.makeSound();
         std::cout << std::endl;
     }
-
+    std::cout << "\n" << std::endl;
     title("copy construction and assignment");
+    std::cout << "\n" << std::endl;
     {
         Dog a;
         std::cout << std::endl;
@@ -78,8 +83,9 @@ int main()
         std::cout << "b type: " << b.getType() << " | e type: " << e.getType() << std::endl;
         std::cout << std::endl;
     }
-
+    std::cout << "\n" << std::endl;
     title("an array of Animal*: each element sounds off correctly");
+    std::cout << "\n" << std::endl;
     {
         const int size = 4;
         Animal* pen[size];
@@ -98,7 +104,7 @@ int main()
         for (int k = 0; k < size; ++k)
             delete pen[k];
     }
-
+    std::cout << "\n" << std::endl;
     title("done");
     return (0);
 }

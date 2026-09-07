@@ -8,7 +8,7 @@
 int main()
 {
     std::cout << "\n" << std::endl;
-    std::cout << "WrongAnimal tests" << std::endl;
+    std::cout << " ========= WrongAnimal tests ========= " << std::endl;
     std::cout << "\n" << std::endl;
     {
         WrongAnimal wrongAnimal;
@@ -18,7 +18,7 @@ int main()
         WrongCat wrongCat;
         std::cout << wrongCat.getType() << ": ";
         wrongCat.makeSound();
-
+        std::cout << "  " << std::endl;
         WrongAnimal* wrongAnimalPointer = &wrongCat;
         std::cout << "Through WrongAnimal*: ";
         wrongAnimalPointer->makeSound();
@@ -29,45 +29,47 @@ int main()
         if (copiedWrongAnimal.getType() == wrongAnimal.getType()
             && assignedWrongAnimal.getType() == wrongAnimal.getType())
             std::cout << "WrongAnimal copy and assignment passed" << std::endl;
-
+        std::cout << "  " << std::endl;
         WrongCat source;
-        source.getBrain()->ideas[0] = "wrong cat idea";
+        source.getBrain()->ideas[0] = "AOOOO";
         WrongCat copy(source);
-        source.getBrain()->ideas[0] = "changed wrong cat idea";
-        if (copy.getBrain()->ideas[0] == "wrong cat idea")
+        source.getBrain()->ideas[0] = "AAAOOOO";
+        if (copy.getBrain()->ideas[0] == "AOOOO")
             std::cout << "WrongCat copy has an independent Brain" << std::endl;
 
         WrongCat assigned;
         assigned = source;
         source.getBrain()->ideas[0] = "changed again";
-        if (assigned.getBrain()->ideas[0] == "changed wrong cat idea")
+        if (assigned.getBrain()->ideas[0] == "AOOOO")
             std::cout << "WrongCat assignment has an independent Brain" << std::endl;
+        std::cout << "  " << std::endl;
     }
 
     std::cout << "\n" << std::endl;
-    std::cout << "Deep copy construction" << std::endl;
+    std::cout << " ========= Deep copy construction ========= " << std::endl;
     std::cout << "\n" << std::endl;
     {
         Dog OGDog;
-        OGDog.getBrain()->ideas[0] = "dog idea";
+        OGDog.getBrain()->ideas[0] = "wanna eat food";
         Dog cpDog(OGDog);
-        OGDog.getBrain()->ideas[0] = "changed dog idea";
-        if (cpDog.getBrain()->ideas[0] == "dog idea")
+        OGDog.getBrain()->ideas[0] = "wanna eat bones";
+        if (cpDog.getBrain()->ideas[0] == "wanna eat food")
             std::cout << "cpDog has its own Brain!" << std::endl;
         else
             std::cout << "cpDog brainless..." << std::endl;
-
+        std::cout << "  " << std::endl;
         Cat OGCat;
-        OGCat.getBrain()->ideas[0] = "cat idea";
+        OGCat.getBrain()->ideas[0] = "Cat wanna eat food";
         Cat cpCat(OGCat);
-        OGCat.getBrain()->ideas[0] = "changed cat idea";
-        if (cpCat.getBrain()->ideas[0] == "cat idea")
+        OGCat.getBrain()->ideas[0] = "Cat wanna eat birds";
+        if (cpCat.getBrain()->ideas[0] == "Cat wanna eat food")
             std::cout << "cpCat has its own Brain!" << std::endl;
         else
             std::cout << "cpCat brainless..." << std::endl;
+        std::cout << "  " << std::endl;
     }
     std::cout << "\n" << std::endl;
-    std::cout << "Deep copy assignment" << std::endl;
+    std::cout << " ========= Deep copy assignment ========= " << std::endl;
     std::cout << "\n" << std::endl;
     {
         Dog sourceDog;
@@ -79,6 +81,7 @@ int main()
             std::cout << "Dog assignment has an independent Brain" << std::endl;
         else
             std::cout << "Dog assignment test failed" << std::endl;
+        std::cout << "  " << std::endl;
 
         Cat sourceCat;
         sourceCat.getBrain()->ideas[0] = "source cat idea";
@@ -89,9 +92,10 @@ int main()
             std::cout << "Cat assignment has an independent Brain" << std::endl;
         else
             std::cout << "Cat assignment test failed" << std::endl;
+        std::cout << "  " << std::endl;
     }
     std::cout << "\n" << std::endl;
-    std::cout << "Animal array: two Dogs and two Cats" << std::endl;
+    std::cout << " ========= Animal array: two Dogs and two Cats ========= " << std::endl;
     std::cout << "\n" << std::endl;
     {
         const int size = 4;
